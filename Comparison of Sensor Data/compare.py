@@ -6,6 +6,21 @@ def duplicates(lst, item):
 
 def eduroam():
 	print()
+	print('\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00 in RPi:')
+	rinds = duplicates(rdata['Networks'],'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00')
+	for ind in rinds:
+		print(ind, rdata['MAC Addresses'][ind])
+
+	print('eduroam in RPi:')
+	rinds = duplicates(rdata['Networks'],'eduroam')
+	for ind in rinds:
+		print(ind, rdata['MAC Addresses'][ind])
+		
+	print('eduroam in LoPy:')
+	linds = duplicates(ldata['Networks'],'eduroam')
+	for ind in linds:
+		print(ind, ldata['MAC Addresses'][ind])
+
 
 client1 = MongoClient('mongodb+srv://cdf999:smart123@cluster0-nkwdw.mongodb.net/SMART_RPi?retryWrites=true')
 rpi = client1.SMART_RPi
